@@ -7,6 +7,7 @@ class GamesController < ApplicationController
   end
 
   def score
+    @letters = params[:letters].split
     @word = params[:word].upcase
     url = "https://wagon-dictionary.herokuapp.com/#{@word}"
     words_dictionary = open(url).read
@@ -18,6 +19,5 @@ class GamesController < ApplicationController
     else
       @response = "Sorry #{@word} does not seem to be a valid english word"
     end
-
   end
 end
